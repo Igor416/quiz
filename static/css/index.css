@@ -1,0 +1,37 @@
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: 400;
+  margin: 0;
+}
+
+.no-link {
+  color: white;
+  text-decoration: none;
+}
+
+.no-link:hover {
+  color: white
+}
+
+.outline-0 {
+  outline: 0;
+}
+
+.transition {
+  transition: 0.5s;
+}
+
+.quiz svg {
+  opacity: 0;
+}
+
+.quiz, .onshadow {
+  transition: box-shadow 0.5s;
+}
+
+.quiz:hover, .onshadow:hover {
+  box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)
+}
+
+.quiz:hover svg {
+  opacity: 1;
+}
