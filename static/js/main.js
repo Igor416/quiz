@@ -43636,7 +43636,7 @@ function App() {
     (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
         (0,_api__WEBPACK_IMPORTED_MODULE_2__.getAuthStatus)().then(setLoggedIn);
     }, []);
-    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { backgroundImage: 'linear-gradient(315deg, var(--light-red), var(--bs-red) 74%)', height: '100vh' }, className: 'd-flex flex-column text-white', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'd-flex py-5 shadow-lg', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'col-1' }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'col-10 d-flex justify-content-between', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, { to: '/', className: 'h1 no-link', children: "\u0421\u0432\u043E\u044F \u0438\u0433\u0440\u0430" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", { href: isLoggedIn ? '/auth/logout/' : 'auth/login/', className: 'no-link', children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { className: 'btn btn-lg bg-green', children: isLoggedIn ? 'Выйти' : 'Войти' }) })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'col-1' })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'd-flex flex-grow-1 mt-5 pt-5', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'col-1' }), isLoggedIn && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'col-10', children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Outlet, {}) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'col-1' })] })] });
+    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { backgroundImage: 'linear-gradient(315deg, var(--light-red), var(--bs-red) 74%)', height: '100vh' }, className: 'd-flex flex-column text-white', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'd-flex py-5 shadow-lg', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'col-1' }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'col-10 d-flex justify-content-between position-relative', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, { to: '/', className: 'h1 no-link', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", { style: { maxHeight: '150%', transform: 'translate(-37.5%, -50%)' }, src: '/static/assets/hat.png', className: 'position-absolute img-fluid' }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "\u0421\u0432\u043E\u044F \u0438\u0433\u0440\u0430" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("a", { href: isLoggedIn ? '/auth/logout/' : 'auth/login/', className: 'no-link position-relative', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { className: 'btn btn-lg bg-green', children: isLoggedIn ? 'Выйти' : 'Войти' }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", { style: { maxHeight: '200%', transform: 'translateY(-25%)' }, src: '/static/assets/gingy.png', className: 'position-absolute img-fluid' })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'col-1' })] }), isLoggedIn && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Outlet, {})] });
 }
 
 
@@ -43658,6 +43658,27 @@ __webpack_require__.r(__webpack_exports__);
 function Cell(_a) {
     var text = _a.text, onClick = _a.onClick;
     return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { onClick: onClick, className: 'm-2 text-center p-2 bg-green onshadow', children: text });
+}
+
+
+/***/ }),
+
+/***/ "./src/components/Centralizer.tsx":
+/*!****************************************!*\
+  !*** ./src/components/Centralizer.tsx ***!
+  \****************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Centralizer)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+function Centralizer(_a) {
+    var className = _a.className, children = _a.children;
+    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'col-1' }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'col-10 ' + className, children: children }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'col-1' })] });
 }
 
 
@@ -43685,7 +43706,7 @@ function Chart(_a) {
     return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'd-flex flex-column flex-grow-1 justify-content-end col-12 h5', children: [showen && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'd-flex flex-column flex-grow-1', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: { borderColor: 'var(--bs-green)' }, className: 'd-flex align-items-end flex-grow-1 justify-content-evenly border-bottom', children: teams.map(function (team, i) {
                             return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'd-flex flex-column justify-content-between h-100 transition px-5 pt-2 text-green', style: { background: "linear-gradient(to top, var(--bs-green) ".concat(team.score / 150 * teams.length, "%, white ").concat(team.score / 150 * teams.length, "%)") }, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: team.score }) }, i);
                         }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'd-flex justify-content-evenly', children: teams.map(function (team, i) {
-                            return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: 'pt-2', children: team.name });
+                            return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: 'pt-2', children: team.name }, i);
                         }) })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { className: 'btn bg-green mt-4 text-white', onClick: function () { return show(!showen); }, children: showen ? 'Скрыть Счет' : 'Показать счет' })] });
 }
 
@@ -43707,10 +43728,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../api */ "./src/api.ts");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var _Cell__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Cell */ "./src/components/Cell.tsx");
 /* harmony import */ var _QuestionView__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./QuestionView */ "./src/components/QuestionView.tsx");
 /* harmony import */ var _Chart__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Chart */ "./src/components/Chart.tsx");
+/* harmony import */ var _Lights__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Lights */ "./src/components/Lights.tsx");
+/* harmony import */ var _Centralizer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Centralizer */ "./src/components/Centralizer.tsx");
 var __assign = (undefined && undefined.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -43738,8 +43761,10 @@ var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from
 
 
 
+
+
 function Game() {
-    var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_6__.useParams)();
+    var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useParams)();
     var k = 200;
     var _a = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(), quiz = _a[0], setQuiz = _a[1];
     var _b = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(), question = _b[0], setQuestion = _b[1];
@@ -43765,14 +43790,14 @@ function Game() {
         (0,_api__WEBPACK_IMPORTED_MODULE_2__.getQuiz)(params.id).then(setQuiz);
         (0,_api__WEBPACK_IMPORTED_MODULE_2__.getTeams)().then(setTeams);
     }, []);
-    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'd-flex flex-column pb-2 h-100 justify-content-between', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { gridTemplateColumns: 'auto '.repeat(6) }, className: 'd-grid mb-5 h4', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {}), [1, 2, 3, 4, 5].map(function (i) { return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Cell__WEBPACK_IMPORTED_MODULE_3__["default"], { text: i * k }, i); }), quiz && quiz.categories.map(function (category, i) {
-                        return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Cell__WEBPACK_IMPORTED_MODULE_3__["default"], { text: category.name }, i), category.questions.map(function (question, j) {
-                                    if (question.answered) {
-                                        return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {});
-                                    }
-                                    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Cell__WEBPACK_IMPORTED_MODULE_3__["default"], { onClick: function () { return setQuestion(question); } }, i * 10 + j);
-                                })] });
-                    })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Chart__WEBPACK_IMPORTED_MODULE_5__["default"], { teams: teams }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_QuestionView__WEBPACK_IMPORTED_MODULE_4__["default"], { question: question, teams: teams, pick: pickTeam })] });
+    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { background: 'transparent url(/static/assets/snow.png) repeat-x center bottom' }, className: 'd-flex flex-grow-1 pt-2 h-100', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Lights__WEBPACK_IMPORTED_MODULE_6__["default"], {}), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_Centralizer__WEBPACK_IMPORTED_MODULE_7__["default"], { className: 'd-flex flex-column h-100 py-2 justify-content-between', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { gridTemplateColumns: 'auto '.repeat(6) }, className: 'd-grid my-5 h4', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {}), [1, 2, 3, 4, 5].map(function (i) { return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Cell__WEBPACK_IMPORTED_MODULE_3__["default"], { text: i * k }, i); }), quiz && quiz.categories.map(function (category, i) {
+                                return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Cell__WEBPACK_IMPORTED_MODULE_3__["default"], { text: category.name }, i), category.questions.map(function (question, j) {
+                                            if (question.answered) {
+                                                return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {});
+                                            }
+                                            return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Cell__WEBPACK_IMPORTED_MODULE_3__["default"], { onClick: function () { return setQuestion(question); } }, i * 10 + j);
+                                        })] });
+                            })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Chart__WEBPACK_IMPORTED_MODULE_5__["default"], { teams: teams }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_QuestionView__WEBPACK_IMPORTED_MODULE_4__["default"], { question: question, teams: teams, pick: pickTeam })] })] });
 }
 
 
@@ -43793,9 +43818,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../api */ "./src/api.ts");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.mjs");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.mjs");
+/* harmony import */ var _Centralizer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Centralizer */ "./src/components/Centralizer.tsx");
+/* harmony import */ var _Lights__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Lights */ "./src/components/Lights.tsx");
 var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from, pack) {
     if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
         if (ar || !(i in from)) {
@@ -43811,10 +43838,12 @@ var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from
 
 
 
+
+
 function Home() {
     var dummy = { name: '', score: 0 };
     var _a = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]), quizes = _a[0], setQuizes = _a[1];
-    var _b = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([dummy, dummy]), teams = _b[0], setTeams = _b[1];
+    var _b = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([dummy, dummy, dummy, dummy]), teams = _b[0], setTeams = _b[1];
     var addTeam = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(function () {
         if (teams.length === 10) {
             return;
@@ -43832,20 +43861,43 @@ function Home() {
         setTeams(copy);
     }, [teams]);
     var editTeamName = function (name, i) {
-        console.log(i);
         var copy = __spreadArray([], teams, true);
         copy[i] = { name: name, score: 0 };
         setTeams(copy);
     };
     (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
         (0,_api__WEBPACK_IMPORTED_MODULE_2__.getQuizes)().then(setQuizes);
-        (0,_api__WEBPACK_IMPORTED_MODULE_2__.getTeams)().then(setTeams);
+        (0,_api__WEBPACK_IMPORTED_MODULE_2__.getTeams)().then(function (resp) {
+            if (resp.length != 0) {
+                setTeams(resp);
+            }
+        });
     }, []);
-    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'd-flex', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'col-5 d-flex flex-column', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", { children: "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0438\u0433\u0440\u0443" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'd-flex flex-column m-2 mt-4 h5', children: quizes.map(function (quiz, i) {
-                            return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Link, { to: 'quiz/' + quiz.id, className: 'quiz d-flex justify-content-between align-items-center p-3 mb-2 transition bg-green no-link', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", { children: [i + 1, ". ", quiz.name] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__.FontAwesomeIcon, { icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faAngleRight, className: 'transition' })] }, i);
-                        }) })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'col-2' }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'col-5 d-flex flex-column', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'd-flex', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h4", { children: ["\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043A\u043E\u043C\u0430\u043D\u0434 ", teams.length] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'd-flex flex-column ms-2', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__.FontAwesomeIcon, { icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faAngleUp, onClick: addTeam }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__.FontAwesomeIcon, { icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_5__.faAngleDown, onClick: deleteTeam })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'd-flex flex-column m-2 mt-4 h5', children: teams.map(function (team, i) {
-                            return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'onshadow d-flex p-3 mb-2 bg-green', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", { children: [i + 1, ". "] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", { className: 'ms-2 border-0 border-bottom outline-0 text-white bg-green flex-grow-1', value: team.name, onChange: function (e) { return editTeamName(e.target.value, i); } })] }, i);
-                        }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'd-flex justify-content-end', children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { className: 'btn bg-green', onClick: function () { return (0,_api__WEBPACK_IMPORTED_MODULE_2__.sendTeams)(teams); }, children: "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C \u043A\u043E\u043C\u0430\u043D\u0434\u044B" }) })] })] });
+    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { background: 'transparent url(/static/assets/gifts.png) no-repeat left bottom' }, className: 'd-flex pt-2 h-100', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Lights__WEBPACK_IMPORTED_MODULE_5__["default"], {}), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_Centralizer__WEBPACK_IMPORTED_MODULE_4__["default"], { className: 'd-flex pt-5 mt-5', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'col-5 d-flex flex-column', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", { children: "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0438\u0433\u0440\u0443" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'd-flex flex-column my-2 mt-4 h5', children: quizes.map(function (quiz, i) {
+                                    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, { to: 'quiz/' + quiz.id, className: 'quiz d-flex justify-content-between align-items-center p-3 mb-2 transition bg-green no-link', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", { children: [i + 1, ". ", quiz.name] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__.FontAwesomeIcon, { icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__.faAngleRight, className: 'transition' })] }, i);
+                                }) })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'col-2' }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'col-5 d-flex flex-column', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'd-flex', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h4", { children: ["\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043A\u043E\u043C\u0430\u043D\u0434 ", teams.length] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'd-flex flex-column ms-2', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__.FontAwesomeIcon, { icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__.faAngleUp, onClick: addTeam }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__.FontAwesomeIcon, { icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__.faAngleDown, onClick: deleteTeam })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'd-flex flex-column my-2 mt-4 h5', children: teams.map(function (team, i) {
+                                    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'onshadow d-flex p-3 mb-2 bg-green', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", { children: [i + 1, ". "] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", { className: 'border-0 border-bottom outline-0 text-white bg-green flex-grow-1', value: team.name, onChange: function (e) { return editTeamName(e.target.value, i); } })] }, i);
+                                }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'd-flex mt-4 justify-content-end', children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { className: 'btn btn-lg bg-green p-3', onClick: function () { return (0,_api__WEBPACK_IMPORTED_MODULE_2__.sendTeams)(teams); }, children: "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C \u043A\u043E\u043C\u0430\u043D\u0434\u044B" }) })] })] })] });
+}
+
+
+/***/ }),
+
+/***/ "./src/components/Lights.tsx":
+/*!***********************************!*\
+  !*** ./src/components/Lights.tsx ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Lights)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+function Lights() {
+    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: { background: 'transparent url(/static/assets/lights.png) repeat left', backgroundSize: '9rem' }, className: 'position-absolute col-12', children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", { style: { opacity: '0', height: '3rem', width: 'auto' }, src: '/static/assets/lights.png' }) });
 }
 
 
@@ -43869,6 +43921,18 @@ __webpack_require__.r(__webpack_exports__);
 
 function QuestionView(_a) {
     var question = _a.question, teams = _a.teams, pick = _a.pick;
+    var audio = document.getElementById('audio');
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+        if (!audio) {
+            return;
+        }
+        if (question) {
+            audio.play();
+            return;
+        }
+        audio.pause();
+        audio.currentTime = 0;
+    }, [question]);
     var validate = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(function (i) {
         var correct = (question === null || question === void 0 ? void 0 : question.correct) === i + 1;
         var isRed = false;
@@ -43899,7 +43963,7 @@ function QuestionView(_a) {
                     return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { onClick: function () { return validate(i); }, className: 'answer onshadow text-center m-3 p-5 border rounded-pill', children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h1", { children: answer }) }, i);
                 }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { id: 'toast', "data-bs-autohide": 'false', style: { width: '60vw' }, className: 'toast position-fixed bottom-0 mb-5 transition hide p-3 rounded-pill bg-red', children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'btn-group d-flex', children: teams.map(function (team, i) {
                         return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { "data-bs-dismiss": 'toast', onClick: function () { return pick(i); }, className: 'btn flex-grow-1 btn-lg bg-red text-white', children: team.name }, i);
-                    }) }) })] });
+                    }) }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("audio", { id: 'audio', src: '/static/assets/music.mp3', loop: true })] });
 }
 
 

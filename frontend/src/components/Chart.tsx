@@ -23,7 +23,7 @@ export default function Chart({teams}: ChartProps) {
       </div>
       <div className='d-flex justify-content-evenly'>
         {teams.map((team, i) => 
-          <span className='pt-2'>{team.name}</span>
+          <span key={i} className='pt-2'>{team.name}</span>
         )}
       </div>
     </div>}

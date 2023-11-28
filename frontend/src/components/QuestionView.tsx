@@ -1,4 +1,4 @@
-import { useCallback } from 'react'
+import { useCallback, useEffect } from 'react'
 import { Question, Team } from '../JSONTypes'
 
 declare var bootstrap: any;
@@ -10,6 +10,20 @@ interface QuestionViewProps {
 }
 
 export default function QuestionView({question, teams, pick}: QuestionViewProps) {
+  const audio = document.getElementById('audio') as HTMLAudioElement;
+
+  useEffect(() => {
+    if (!audio) {
+      return 
+    }
+    if (question) {
+      audio.play();
+      return;
+    }
+    audio.pause();
+    audio.currentTime = 0;
+  }, [question])
+
   const validate = useCallback((i: number) => {
     const correct = question?.correct === i + 1
     let isRed = false;
@@ -63,5 +77,6 @@ export default function QuestionView({question, teams, pick}: QuestionViewProps)
         )}
       </div>
     </div>
+    <audio id='audio' src='/static/assets/music.mp3' loop />
   </div>
 }

@@ -5,6 +5,8 @@ import { useParams } from 'react-router-dom'
 import Cell from './Cell'
 import QuestionView from './QuestionView'
 import Chart from './Chart'
+import Lights from './Lights'
+import Centralizer from './Centralizer'
 
 export default function Game() {
   const params = useParams()
@@ -37,24 +39,30 @@ export default function Game() {
     getTeams().then(setTeams)
   }, [])
 
-  return <div className='d-flex flex-column pb-2 h-100 justify-content-between'>
-    <div style={{gridTemplateColumns: 'auto '.repeat(6)}} className='d-grid mb-5 h4'>
-      <div></div>
-      {[1, 2, 3, 4, 5].map(i => <Cell key={i} text={i * k} />)}
-      {quiz && quiz.categories.map((category, i) => 
-        <>
-          <Cell key={i} text={category.name} />
-          {category.questions.map((question, j) => {
-            if (question.answered) {
-              return <div></div>
+  return <div
+    style={{background: 'transparent url(/static/assets/snow.png) repeat-x center bottom'}}
+    className='d-flex flex-grow-1 pt-2 h-100'
+  >
+    <Lights />
+    <Centralizer className='d-flex flex-column h-100 py-2 justify-content-between'>
+      <div style={{gridTemplateColumns: 'auto '.repeat(6)}} className='d-grid my-5 h4'>
+        <div></div>
+        {[1, 2, 3, 4, 5].map(i => <Cell key={i} text={i * k} />)}
+        {quiz && quiz.categories.map((category, i) => 
+          <>
+            <Cell key={i} text={category.name} />
+            {category.questions.map((question, j) => {
+              if (question.answered) {
+                return <div></div>
+              }
+              return <Cell onClick={() => setQuestion(question)} key={i * 10 + j} />
             }
-            return <Cell onClick={() => setQuestion(question)} key={i * 10 + j} />
-          }
-          )}
-        </>
-      )}
-    </div>
-    <Chart teams={teams} />
-    <QuestionView question={question} teams={teams} pick={pickTeam} />
+            )}
+          </>
+        )}
+      </div>
+      <Chart teams={teams} />
+      <QuestionView question={question} teams={teams} pick={pickTeam} />
+    </Centralizer>
   </div>
 }
