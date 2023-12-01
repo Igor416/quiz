@@ -15,7 +15,7 @@ export default function Chart({teams}: ChartProps) {
           <div
             key={i}
             className={'d-flex flex-column justify-content-between h-100 transition px-5 pt-2 text-green'}
-            style={{background: `linear-gradient(to top, var(--bs-green) ${team.score / 150 * teams.length}%, white ${team.score / 150 * teams.length}%)`}}
+            style={{background: `linear-gradient(to top, var(--bs-green) ${team.score / 75}%, white ${team.score / 75}%)`}}
           >
             <span>{team.score}</span>
           </div>
