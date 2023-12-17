@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { Question, Team } from '../JSONTypes'
 
 declare var bootstrap: any;
@@ -10,7 +10,8 @@ interface QuestionViewProps {
 }
 
 export default function QuestionView({question, teams, pick}: QuestionViewProps) {
-  const audio = document.getElementById('audio') as HTMLAudioElement;
+  const [audio, setAudio] = useState<HTMLAudioElement>(document.getElementById('audio1') as HTMLAudioElement)
+  const [trackId, setTrackId] = useState(1)
 
   useEffect(() => {
     if (!audio) {
@@ -22,7 +23,12 @@ export default function QuestionView({question, teams, pick}: QuestionViewProps)
     }
     audio.pause();
     audio.currentTime = 0;
+    setTrackId(trackId === 3 ? 1 : trackId + 1)
   }, [question])
+
+  useEffect(() => {
+    setAudio(document.getElementById('audio' + trackId) as HTMLAudioElement)
+  }, [trackId]) 
 
   const validate = useCallback((i: number) => {
     const correct = question?.correct === i + 1
@@ -47,6 +53,7 @@ export default function QuestionView({question, teams, pick}: QuestionViewProps)
 
   return <div
     style={{
+      zIndex: 1200,
       width: '100vw',
       height: '100vh',
       padding: '5rem 20vw',
@@ -55,10 +62,10 @@ export default function QuestionView({question, teams, pick}: QuestionViewProps)
     }}
     className='position-absolute d-flex flex-column align-items-center transition start-0 top-0'
   >
-    <div className='w-100 text-center my-5 p-5 border rounded-pill'>
+    <div style={{overflowX: 'auto', height: 'calc(50vh - 5rem)'}} className='w-100 text-center my-5 p-5 border rounded-pill'>
       <h1>{question?.label}</h1>
     </div>
-    <div style={{gridTemplateColumns: 'auto auto'}} className='w-100 mt-5 d-grid'>
+    <div style={{gridTemplateColumns: 'auto auto', height: 'calc(50vh - 5rem)'}} className='w-100 mt-5 d-grid'>
       {question?.answers.map((answer, i) => 
       <div onClick={() => validate(i)} key={i} className='answer onshadow text-center m-3 p-5 border rounded-pill'>
         <h1>{answer}</h1>
@@ -77,6 +84,6 @@ export default function QuestionView({question, teams, pick}: QuestionViewProps)
         )}
       </div>
     </div>
-    <audio id='audio' src='/static/assets/music.mp3' loop />
+    {[1, 2, 3].map(id => <audio id={`audio${id}`} src={`/static/assets/music${id}.mp3`} loop />)}
   </div>
 }

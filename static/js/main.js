@@ -43921,7 +43921,8 @@ __webpack_require__.r(__webpack_exports__);
 
 function QuestionView(_a) {
     var question = _a.question, teams = _a.teams, pick = _a.pick;
-    var audio = document.getElementById('audio');
+    var _b = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(document.getElementById('audio1')), audio = _b[0], setAudio = _b[1];
+    var _c = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(1), trackId = _c[0], setTrackId = _c[1];
     (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
         if (!audio) {
             return;
@@ -43932,7 +43933,11 @@ function QuestionView(_a) {
         }
         audio.pause();
         audio.currentTime = 0;
+        setTrackId(trackId === 3 ? 1 : trackId + 1);
     }, [question]);
+    (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+        setAudio(document.getElementById('audio' + trackId));
+    }, [trackId]);
     var validate = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(function (i) {
         var correct = (question === null || question === void 0 ? void 0 : question.correct) === i + 1;
         var isRed = false;
@@ -43954,16 +43959,17 @@ function QuestionView(_a) {
         }, 2000);
     }, [question]);
     return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: {
+            zIndex: 1200,
             width: '100vw',
             height: '100vh',
             padding: '5rem 20vw',
             transform: "translateY(".concat(question ? '0' : '-100', "vh)"),
             background: 'linear-gradient(135deg, var(--light-green), var(--bs-green) 74%)'
-        }, className: 'position-absolute d-flex flex-column align-items-center transition start-0 top-0', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'w-100 text-center my-5 p-5 border rounded-pill', children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h1", { children: question === null || question === void 0 ? void 0 : question.label }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: { gridTemplateColumns: 'auto auto' }, className: 'w-100 mt-5 d-grid', children: question === null || question === void 0 ? void 0 : question.answers.map(function (answer, i) {
+        }, className: 'position-absolute d-flex flex-column align-items-center transition start-0 top-0', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: { overflowX: 'auto', height: 'calc(50vh - 5rem)' }, className: 'w-100 text-center my-5 p-5 border rounded-pill', children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h1", { children: question === null || question === void 0 ? void 0 : question.label }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: { gridTemplateColumns: 'auto auto', height: 'calc(50vh - 5rem)' }, className: 'w-100 mt-5 d-grid', children: question === null || question === void 0 ? void 0 : question.answers.map(function (answer, i) {
                     return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { onClick: function () { return validate(i); }, className: 'answer onshadow text-center m-3 p-5 border rounded-pill', children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h1", { children: answer }) }, i);
                 }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { id: 'toast', "data-bs-autohide": 'false', style: { width: '60vw' }, className: 'toast position-fixed bottom-0 mb-5 transition hide p-3 rounded-pill bg-red', children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'btn-group d-flex', children: teams.map(function (team, i) {
                         return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { "data-bs-dismiss": 'toast', onClick: function () { return pick(i); }, className: 'btn flex-grow-1 btn-lg bg-red text-white', children: team.name }, i);
-                    }) }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("audio", { id: 'audio', src: '/static/assets/music.mp3', loop: true })] });
+                    }) }) }), [1, 2, 3].map(function (id) { return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("audio", { id: "audio".concat(id), src: "/static/assets/music".concat(id, ".mp3"), loop: true }); })] });
 }
 
 
