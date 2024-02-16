@@ -5,6 +5,8 @@ from uuid import uuid4
 class Quiz(models.Model):
   id = models.UUIDField(primary_key=True, default=uuid4)
   name = models.CharField('Название', max_length=32, unique=True)
+  owner = models.ForeignKey('auth.User', verbose_name='Владелец', on_delete=models.CASCADE)
+  public = models.BooleanField('Общая', default=False)
   
   def __str__(self):
     return self.name
@@ -47,7 +49,9 @@ class Question(models.Model):
     verbose_name_plural = 'Вопросы'
 
 class Team(models.Model):
-  name = models.CharField('Имя', max_length=32, primary_key=True)
+  id = models.UUIDField(primary_key=True, default=uuid4)
+  quiz = models.ForeignKey(Quiz, verbose_name='Игра', on_delete=models.CASCADE)
+  name = models.CharField('Имя', max_length=32)
   score = models.PositiveSmallIntegerField('Очки', default=0)
   
   def __str__(self):

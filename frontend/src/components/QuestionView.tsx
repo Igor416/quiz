@@ -34,13 +34,15 @@ export default function QuestionView({question, teams, pick}: QuestionViewProps)
     const correct = question?.correct === i + 1
     let isRed = false;
     const answer = document.getElementsByClassName('answer')[i] as HTMLDivElement;
+    answer.style.filter = 'brightness(0.75)'
     const interval = setInterval(() => {
-      answer.style.backgroundColor = `var(--light-${isRed ? 'red' : 'green'})`
+      answer.style.backgroundColor = `var(--bs-${isRed ? 'danger' : 'success'})`
       isRed = !isRed
     }, 100)
     setTimeout(() => {
       clearInterval(interval)
-      answer.style.backgroundColor = `var(--bs-${correct ? 'green' : 'red'})`
+      answer.style.filter = ''
+      answer.style.backgroundColor = `var(--bs-${correct ? 'success' : 'danger'})`
       if (correct) {
         let toast = bootstrap.Toast.getOrCreateInstance(document.getElementById('toast'))
         toast.show()
@@ -58,7 +60,7 @@ export default function QuestionView({question, teams, pick}: QuestionViewProps)
       height: '100vh',
       padding: '5rem 20vw',
       transform: `translateY(${question ? '0' : '-100'}vh)`,
-      background: 'linear-gradient(135deg, var(--light-green), var(--bs-green) 74%)'
+      backgroundImage: 'linear-gradient(315deg, #6610f2, #6f42c1 75%)'
     }}
     className='position-absolute d-flex flex-column align-items-center transition start-0 top-0'
   >
@@ -76,14 +78,14 @@ export default function QuestionView({question, teams, pick}: QuestionViewProps)
       id='toast'
       data-bs-autohide='false'
       style={{width: '60vw'}}
-      className='toast position-fixed bottom-0 mb-5 transition hide p-3 rounded-pill bg-red'
+      className='toast position-fixed bottom-0 mb-5 transition hide p-3 rounded-pill bg-danger'
     >
       <div className='btn-group d-flex'>
         {teams.map((team, i) => 
-          <button key={i} data-bs-dismiss='toast' onClick={() => pick(i)} className='btn flex-grow-1 btn-lg bg-red text-white'>{team.name}</button>
+          <button key={i} data-bs-dismiss='toast' onClick={() => pick(i)} className='btn flex-grow-1 btn-lg bg-danger'>{team.name}</button>
         )}
       </div>
     </div>
-    {[1, 2, 3].map(id => <audio id={`audio${id}`} src={`/static/assets/music${id}.mp3`} loop />)}
+    {[1, 2, 3].map(id => <audio id={`audio${id}`} key={id} src={`/static/assets/music${id}.mp3`} loop />)}
   </div>
 }

@@ -20,13 +20,19 @@ const root = createRoot(
 	document.getElementById('main') as HTMLElement
 );
 
+const colors = ['danger', 'succes', 'warning', 'primary']
+
+export interface ColorPaletteProps {
+	colors: string[]
+}
+
 root.render(
 	<React.StrictMode>
 		<BrowserRouter>
 			<Routes>
 				<Route path='/' element={<App />}>
-					<Route path='' element={<Home />} />
-					<Route path='quiz/:id' element={<Game />} />
+					<Route path='' element={<Home colors={colors} />} />
+					<Route path='quiz/:id' element={<Game colors={colors} />} />
 				</Route>
 			</Routes>
 		</BrowserRouter>

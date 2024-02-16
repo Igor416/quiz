@@ -8,7 +8,7 @@ export interface Question {
   category: string
 }
 
-interface Category {
+export interface Category {
   id: string,
   name: string,
   questions: Question[]

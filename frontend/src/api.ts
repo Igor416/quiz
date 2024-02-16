@@ -17,15 +17,8 @@ export function answerQuestion(id: string) {
 	sendGetRequest<Question>('answer_question/' + id)
 }
 
-export function getTeams(): Promise<Team[]> {
-	return sendGetRequest<Team[]>('teams')
-}
-
-export function sendTeams(teams: Team[]) {
-	console.log(teams)
-	for (let team of teams) {
-		sendPostRequest<Team>('teams', team)
-	}
+export function getTeams(id: string): Promise<Team[]> {
+	return sendGetRequest<Team[]>('teams/' + id)
 }
 
 export function updateTeam(team: Team) {

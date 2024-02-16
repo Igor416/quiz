@@ -43498,7 +43498,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   getQuiz: () => (/* binding */ getQuiz),
 /* harmony export */   getQuizes: () => (/* binding */ getQuizes),
 /* harmony export */   getTeams: () => (/* binding */ getTeams),
-/* harmony export */   sendTeams: () => (/* binding */ sendTeams),
 /* harmony export */   updateTeam: () => (/* binding */ updateTeam)
 /* harmony export */ });
 /* harmony import */ var js_cookie__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! js-cookie */ "./node_modules/js-cookie/dist/js.cookie.mjs");
@@ -43551,15 +43550,8 @@ function getQuiz(id) {
 function answerQuestion(id) {
     sendGetRequest('answer_question/' + id);
 }
-function getTeams() {
-    return sendGetRequest('teams');
-}
-function sendTeams(teams) {
-    console.log(teams);
-    for (var _i = 0, teams_1 = teams; _i < teams_1.length; _i++) {
-        var team = teams_1[_i];
-        sendPostRequest('teams', team);
-    }
+function getTeams(id) {
+    return sendGetRequest('teams/' + id);
 }
 function updateTeam(team) {
     sendPostRequest('team/' + team.name, team, 'PATCH');
@@ -43636,7 +43628,7 @@ function App() {
     (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
         (0,_api__WEBPACK_IMPORTED_MODULE_2__.getAuthStatus)().then(setLoggedIn);
     }, []);
-    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { backgroundImage: 'linear-gradient(315deg, var(--light-red), var(--bs-red) 74%)', height: '100vh' }, className: 'd-flex flex-column text-white', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'd-flex py-5 shadow-lg', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'col-1' }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'col-10 d-flex justify-content-between position-relative', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, { to: '/', className: 'h1 no-link', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", { style: { maxHeight: '150%', transform: 'translate(-37.5%, -50%)' }, src: '/static/assets/hat.png', className: 'position-absolute img-fluid' }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "\u0421\u0432\u043E\u044F \u0438\u0433\u0440\u0430" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("a", { href: isLoggedIn ? '/auth/logout/' : 'auth/login/', className: 'no-link position-relative', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { className: 'btn btn-lg bg-green', children: isLoggedIn ? 'Выйти' : 'Войти' }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", { style: { maxHeight: '200%', transform: 'translateY(-25%)' }, src: '/static/assets/gingy.png', className: 'position-absolute img-fluid' })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'col-1' })] }), isLoggedIn && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Outlet, {})] });
+    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { backgroundImage: 'linear-gradient(315deg, #6610f2, #6f42c1 75%)', height: '100vh' }, className: 'd-flex flex-column text-white', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'd-flex py-5 shadow-lg', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'col-1' }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'col-10 d-flex justify-content-between position-relative', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_3__.Link, { to: '/', className: 'h1 no-link', children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "\u0421\u0432\u043E\u044F \u0438\u0433\u0440\u0430" }) }), !isLoggedIn ? (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", { href: 'auth/login/', className: 'no-link position-relative', children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { className: 'btn btn-lg bg-primary', children: "\u0412\u043E\u0439\u0442\u0438" }) }) : (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { className: 'btn btn-lg bg-primary', children: "By @new_viperr_member" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'col-1' })] }), isLoggedIn && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_4__.Outlet, {})] });
 }
 
 
@@ -43657,7 +43649,7 @@ __webpack_require__.r(__webpack_exports__);
 
 function Cell(_a) {
     var text = _a.text, onClick = _a.onClick;
-    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { onClick: onClick, className: 'm-2 text-center p-2 bg-green onshadow', children: text });
+    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { onClick: onClick, className: 'm-2 text-center p-2 bg-success onshadow', children: text });
 }
 
 
@@ -43701,13 +43693,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function Chart(_a) {
-    var teams = _a.teams;
+    var teams = _a.teams, colors = _a.colors;
     var _b = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true), showen = _b[0], show = _b[1];
-    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'd-flex flex-column flex-grow-1 justify-content-end col-12 h5', children: [showen && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'd-flex flex-column flex-grow-1', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: { borderColor: 'var(--bs-green)' }, className: 'd-flex align-items-end flex-grow-1 justify-content-evenly border-bottom', children: teams.map(function (team, i) {
-                            return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'd-flex flex-column justify-content-between h-100 transition px-5 pt-2 text-green', style: { background: "linear-gradient(to top, var(--bs-green) ".concat(team.score / 75, "%, white ").concat(team.score / 75, "%)") }, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: team.score }) }, i);
+    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'd-flex flex-column flex-grow-1 justify-content-end col-12 h5', children: [showen && (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'd-flex flex-column flex-grow-1', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'd-flex align-items-end flex-grow-1 justify-content-evenly border-bottom', children: teams.map(function (team, i) {
+                            return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'd-flex flex-column justify-content-between h-100 transition px-5 pt-2 text-' + colors[i % 4], style: { background: "linear-gradient(to top, var(--bs-".concat(colors[i % 4], ") ").concat(team.score / 75, "%, white ").concat(team.score / 75, "%)") }, children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: team.score }) }, i);
                         }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'd-flex justify-content-evenly', children: teams.map(function (team, i) {
                             return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { className: 'pt-2', children: team.name }, i);
-                        }) })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { className: 'btn bg-green mt-4 text-white', onClick: function () { return show(!showen); }, children: showen ? 'Скрыть Счет' : 'Показать счет' })] });
+                        }) })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { className: 'btn bg-primary mt-4 text-white', onClick: function () { return show(!showen); }, children: showen ? 'Скрыть Счет' : 'Показать счет' })] });
 }
 
 
@@ -43728,12 +43720,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../api */ "./src/api.ts");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/dist/index.js");
 /* harmony import */ var _Cell__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Cell */ "./src/components/Cell.tsx");
 /* harmony import */ var _QuestionView__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./QuestionView */ "./src/components/QuestionView.tsx");
 /* harmony import */ var _Chart__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Chart */ "./src/components/Chart.tsx");
-/* harmony import */ var _Lights__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Lights */ "./src/components/Lights.tsx");
-/* harmony import */ var _Centralizer__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./Centralizer */ "./src/components/Centralizer.tsx");
+/* harmony import */ var _Centralizer__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./Centralizer */ "./src/components/Centralizer.tsx");
 var __assign = (undefined && undefined.__assign) || function () {
     __assign = Object.assign || function(t) {
         for (var s, i = 1, n = arguments.length; i < n; i++) {
@@ -43762,13 +43753,14 @@ var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from
 
 
 
-
-function Game() {
-    var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_8__.useParams)();
+function Game(_a) {
+    var colors = _a.colors;
+    var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useParams)();
     var k = 200;
-    var _a = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(), quiz = _a[0], setQuiz = _a[1];
-    var _b = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(), question = _b[0], setQuestion = _b[1];
-    var _c = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]), teams = _c[0], setTeams = _c[1];
+    var _b = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(), quiz = _b[0], setQuiz = _b[1];
+    var _c = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(), question = _c[0], setQuestion = _c[1];
+    var _d = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]), teams = _d[0], setTeams = _d[1];
+    var _e = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]), list = _e[0], setList = _e[1];
     var pickTeam = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(function (i) {
         if (quiz && question) {
             var teamsCopy = __spreadArray([], teams, true);
@@ -43787,17 +43779,30 @@ function Game() {
         }
     }, [quiz, question, teams]);
     (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
-        (0,_api__WEBPACK_IMPORTED_MODULE_2__.getQuiz)(params.id).then(setQuiz);
-        (0,_api__WEBPACK_IMPORTED_MODULE_2__.getTeams)().then(setTeams);
+        (0,_api__WEBPACK_IMPORTED_MODULE_2__.getQuiz)(params.id).then(function (resp) {
+            setQuiz(resp);
+            var l = [];
+            for (var _i = 0, _a = resp.categories; _i < _a.length; _i++) {
+                var category = _a[_i];
+                l.push(undefined);
+                for (var _b = 0, _c = category.questions; _b < _c.length; _b++) {
+                    var question_1 = _c[_b];
+                    l.push(question_1);
+                }
+            }
+            setList(l);
+        });
+        (0,_api__WEBPACK_IMPORTED_MODULE_2__.getTeams)(params.id).then(setTeams);
     }, []);
-    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { background: 'transparent url(/static/assets/snow.png) repeat-x center bottom' }, className: 'd-flex flex-grow-1 pt-2 h-100', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Lights__WEBPACK_IMPORTED_MODULE_6__["default"], {}), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_Centralizer__WEBPACK_IMPORTED_MODULE_7__["default"], { className: 'd-flex flex-column h-100 py-2 justify-content-between', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { gridTemplateColumns: 'auto '.repeat(6) }, className: 'd-grid my-5 h4', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {}), [1, 2, 3, 4, 5].map(function (i) { return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Cell__WEBPACK_IMPORTED_MODULE_3__["default"], { text: i * k }, i); }), quiz && quiz.categories.map(function (category, i) {
-                                return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Cell__WEBPACK_IMPORTED_MODULE_3__["default"], { text: category.name }, i), category.questions.map(function (question, j) {
-                                            if (question.answered) {
-                                                return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {});
-                                            }
-                                            return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Cell__WEBPACK_IMPORTED_MODULE_3__["default"], { onClick: function () { return setQuestion(question); } }, i * 10 + j);
-                                        })] });
-                            })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Chart__WEBPACK_IMPORTED_MODULE_5__["default"], { teams: teams }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_QuestionView__WEBPACK_IMPORTED_MODULE_4__["default"], { question: question, teams: teams, pick: pickTeam })] })] });
+    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'd-flex flex-grow-1 pt-2 h-100', children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_Centralizer__WEBPACK_IMPORTED_MODULE_6__["default"], { className: 'd-flex flex-column h-100 py-2 justify-content-between', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { gridTemplateColumns: 'auto '.repeat(6) }, className: 'd-grid my-5 h4', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {}), [1, 2, 3, 4, 5].map(function (i) { return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Cell__WEBPACK_IMPORTED_MODULE_3__["default"], { text: i * k }, i); }), quiz && list.map(function (question, i) {
+                            if (question) {
+                                if (question.answered) {
+                                    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {});
+                                }
+                                return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Cell__WEBPACK_IMPORTED_MODULE_3__["default"], { onClick: function () { return setQuestion(question); } }, i);
+                            }
+                            return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Cell__WEBPACK_IMPORTED_MODULE_3__["default"], { text: quiz.categories[Math.floor(i / 6)].name }, i);
+                        })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Chart__WEBPACK_IMPORTED_MODULE_5__["default"], { teams: teams, colors: colors }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_QuestionView__WEBPACK_IMPORTED_MODULE_4__["default"], { question: question, teams: teams, pick: pickTeam })] }) });
 }
 
 
@@ -43818,11 +43823,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../api */ "./src/api.ts");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/dist/index.js");
 /* harmony import */ var _fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @fortawesome/react-fontawesome */ "./node_modules/@fortawesome/react-fontawesome/index.es.js");
-/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.mjs");
+/* harmony import */ var _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @fortawesome/free-solid-svg-icons */ "./node_modules/@fortawesome/free-solid-svg-icons/index.mjs");
 /* harmony import */ var _Centralizer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./Centralizer */ "./src/components/Centralizer.tsx");
-/* harmony import */ var _Lights__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./Lights */ "./src/components/Lights.tsx");
 var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from, pack) {
     if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
         if (ar || !(i in from)) {
@@ -43839,11 +43843,11 @@ var __spreadArray = (undefined && undefined.__spreadArray) || function (to, from
 
 
 
-
-function Home() {
+function Home(_a) {
+    var colors = _a.colors;
     var dummy = { name: '', score: 0 };
-    var _a = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]), quizes = _a[0], setQuizes = _a[1];
-    var _b = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([dummy, dummy, dummy, dummy]), teams = _b[0], setTeams = _b[1];
+    var _b = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([]), quizes = _b[0], setQuizes = _b[1];
+    var _c = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)([dummy, dummy, dummy, dummy]), teams = _c[0], setTeams = _c[1];
     var addTeam = (0,react__WEBPACK_IMPORTED_MODULE_1__.useCallback)(function () {
         if (teams.length === 10) {
             return;
@@ -43867,37 +43871,10 @@ function Home() {
     };
     (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
         (0,_api__WEBPACK_IMPORTED_MODULE_2__.getQuizes)().then(setQuizes);
-        (0,_api__WEBPACK_IMPORTED_MODULE_2__.getTeams)().then(function (resp) {
-            if (resp.length != 0) {
-                setTeams(resp);
-            }
-        });
     }, []);
-    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { style: { background: 'transparent url(/static/assets/gifts.png) no-repeat left bottom' }, className: 'd-flex pt-2 h-100', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_Lights__WEBPACK_IMPORTED_MODULE_5__["default"], {}), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_Centralizer__WEBPACK_IMPORTED_MODULE_4__["default"], { className: 'd-flex pt-5 mt-5', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'col-5 d-flex flex-column', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", { children: "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0438\u0433\u0440\u0443" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'd-flex flex-column my-2 mt-4 h5', children: quizes.map(function (quiz, i) {
-                                    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_6__.Link, { to: 'quiz/' + quiz.id, className: 'quiz d-flex justify-content-between align-items-center p-3 mb-2 transition bg-green no-link', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", { children: [i + 1, ". ", quiz.name] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__.FontAwesomeIcon, { icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__.faAngleRight, className: 'transition' })] }, i);
-                                }) })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'col-2' }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'col-5 d-flex flex-column', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'd-flex', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("h4", { children: ["\u041A\u043E\u043B\u0438\u0447\u0435\u0441\u0442\u0432\u043E \u043A\u043E\u043C\u0430\u043D\u0434 ", teams.length] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'd-flex flex-column ms-2', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__.FontAwesomeIcon, { icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__.faAngleUp, onClick: addTeam }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__.FontAwesomeIcon, { icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_7__.faAngleDown, onClick: deleteTeam })] })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'd-flex flex-column my-2 mt-4 h5', children: teams.map(function (team, i) {
-                                    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'onshadow d-flex p-3 mb-2 bg-green', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", { children: [i + 1, ". "] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("input", { className: 'border-0 border-bottom outline-0 text-white bg-green flex-grow-1', value: team.name, onChange: function (e) { return editTeamName(e.target.value, i); } })] }, i);
-                                }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'd-flex mt-4 justify-content-end', children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { className: 'btn btn-lg bg-green p-3', onClick: function () { return (0,_api__WEBPACK_IMPORTED_MODULE_2__.sendTeams)(teams); }, children: "\u0421\u043E\u0445\u0440\u0430\u043D\u0438\u0442\u044C \u043A\u043E\u043C\u0430\u043D\u0434\u044B" }) })] })] })] });
-}
-
-
-/***/ }),
-
-/***/ "./src/components/Lights.tsx":
-/*!***********************************!*\
-  !*** ./src/components/Lights.tsx ***!
-  \***********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Lights)
-/* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-function Lights() {
-    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: { background: 'transparent url(/static/assets/lights.png) repeat left', backgroundSize: '9rem' }, className: 'position-absolute col-12', children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", { style: { opacity: '0', height: '3rem', width: 'auto' }, src: '/static/assets/lights.png' }) });
+    return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'd-flex pt-2 h-100', children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(_Centralizer__WEBPACK_IMPORTED_MODULE_4__["default"], { className: 'd-flex pt-5 mt-5', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'col-5 d-flex flex-column', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", { children: "\u0412\u044B\u0431\u0435\u0440\u0438\u0442\u0435 \u0438\u0433\u0440\u0443" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'd-flex flex-column my-2 mt-4 h5', children: quizes.map(function (quiz, i) {
+                                return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, { to: 'quiz/' + quiz.id, className: 'quiz d-flex justify-content-between align-items-center p-3 mb-2 transition no-link bg-' + colors[i % 4], children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("span", { children: [i + 1, ". ", quiz.name] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_fortawesome_react_fontawesome__WEBPACK_IMPORTED_MODULE_3__.FontAwesomeIcon, { icon: _fortawesome_free_solid_svg_icons__WEBPACK_IMPORTED_MODULE_6__.faAngleRight, className: 'transition' })] }, i);
+                            }) })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'col-2' }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", { className: 'col-5 d-flex flex-column', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h3", { className: 'mb-4', children: "\u041F\u0440\u0430\u0432\u0438\u043B\u0430:" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", { children: "\u0423\u0447\u0430\u0441\u0442\u043D\u0438\u043A\u0438:" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", { children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", { children: "\u0412\u0435\u0434\u0443\u0449\u0438\u0439 (\u0443\u0447\u0438\u0442\u0435\u043B\u044C)" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", { children: "\u041A\u043E\u043C\u0430\u043D\u0434\u044B \u0443\u0447\u0435\u043D\u0438\u043A\u043E\u0432 (>2)" })] }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", { className: 'mt-4', children: "\u0426\u0435\u043B\u044C \u0418\u0433\u0440\u044B:" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("span", { children: "\u041D\u0430\u0431\u0440\u0430\u0442\u044C \u0431\u043E\u043B\u044C\u0448\u0435 \u0431\u0430\u043B\u043B\u043E\u0432 \u0447\u0435\u043C \u0441\u043E\u043F\u0435\u0440\u043D\u0438\u043A\u0438" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h4", { className: 'mt-4', children: "\u0425\u043E\u0434 \u0418\u0433\u0440\u044B:" }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", { children: "\u041E\u043F\u0440\u0435\u0434\u0435\u043B\u0438\u0432\u0448\u0438\u0435\u0441\u044F \u043A\u043E\u043C\u0430\u043D\u0434\u044B \u0443\u0447\u0435\u043D\u0438\u043A\u043E\u0432 \u0443\u0441\u0442\u0430\u043D\u0430\u0432\u043B\u0438\u0432\u0430\u044E\u0442 \u043C\u0435\u0436\u0434\u0443 \u0441\u043E\u0431\u043E\u0439, \u0438\u043B\u0438 \u043F\u043E\u043B\u0443\u0447\u0430\u044E\u0442 \u043E\u0442 \u0443\u0447\u0438\u0442\u0435\u043B\u044F, \u043E\u0447\u0435\u0440\u0435\u0434\u044C \u043E\u0442\u0432\u0435\u0442\u043E\u0432 \u043D\u0430 \u0432\u043E\u043F\u0440\u043E\u0441\u044B. \u041A\u043E\u043C\u0430\u043D\u0434\u0430, \u0447\u044C\u044F \u043E\u0447\u0435\u0440\u0435\u0434\u044C \u043D\u0430\u0441\u0442\u0430\u043B\u0430, \u0432\u044B\u0431\u0438\u0440\u0430\u0435\u0442 \u043A\u0430\u0442\u0435\u0433\u043E\u0440\u0438\u044E \u0432\u043E\u043F\u0440\u043E\u0441\u0430 \u0438 \u0446\u0435\u043D\u0443 \u0432\u043E\u043F\u0440\u043E\u0441\u0430, \u043F\u043E\u0441\u043B\u0435 \u0447\u0435\u0433\u043E \u0443\u0447\u0438\u0442\u0435\u043B\u044C \u0432\u044B\u0431\u0438\u0440\u0430\u0435\u0442 \u0443\u043A\u0430\u0437\u0430\u043D\u043D\u044B\u0439 \u0432\u043E\u043F\u0440\u043E\u0441, \u0435\u0441\u043B\u0438 \u043E\u043D \u043D\u0435 \u0431\u044B\u043B \u0440\u0430\u043D\u0435\u0435 \u0432\u044B\u0431\u0440\u0430\u043D \u044D\u0442\u043E\u0439 \u0436\u0435 \u043A\u043E\u043C\u0430\u043D\u0434\u043E\u0439 \u0438\u043B\u0438 \u043B\u044E\u0431\u043E\u0439 \u0434\u0440\u0443\u0433\u043E\u0439. \u041A\u043E\u043C\u0430\u043D\u0434\u0430, \u0432\u044B\u0431\u0440\u0430\u0432\u0448\u0430\u044F \u0432\u043E\u043F\u0440\u043E\u0441 \u043F\u043E\u043B\u0443\u0447\u0430\u0435\u0442 \u043F\u0440\u0430\u0432\u043E \u043E\u0442\u0432\u0435\u0442\u0438\u0442\u044C \u043D\u0430 \u0432\u043E\u043F\u0440\u043E\u0441 \u043F\u0435\u0440\u0432\u044B\u043C\u0438. \u0412 \u0441\u043B\u0443\u0447\u0430\u0435 \u0432\u0435\u0440\u043D\u043E\u0433\u043E \u043E\u0442\u0432\u0435\u0442\u0430, \u0432\u0435\u0434\u0443\u0449\u0438\u0439 \u043F\u0440\u0438\u0441\u0443\u0436\u0434\u0430\u0435\u0442 \u043E\u0442\u0432\u0435\u0442\u0438\u0432\u0448\u0435\u0439 \u043A\u043E\u043C\u0430\u043D\u0434\u0435 \u043F\u043E\u043B\u0430\u0433\u0430\u044E\u0449\u0438\u0435\u0441\u044F \u0447\u0438\u0441\u043B\u043E \u0431\u0430\u043B\u043B\u043E\u0432. \u0418\u043D\u0430\u0447\u0435, \u043A\u043E\u043C\u0430\u043D\u0434\u0430 \u0443\u0441\u0442\u0443\u043F\u0430\u0435\u0442 \u0441\u0432\u043E\u0439 \u0445\u043E\u0434 \u0441\u043B\u0435\u0434\u0443\u044E\u0449\u0435\u0439 \u043A\u043E\u043C\u0430\u043D\u0434\u0435, \u043A\u043E\u0442\u043E\u0440\u0430\u044F \u0443\u0436\u0435 \u0432\u044B\u0431\u0438\u0440\u0430\u0435\u0442 \u0438\u0437 \u043C\u0435\u043D\u044C\u0448\u0435 \u043A\u043E\u043B-\u0432\u0430 \u043E\u0442\u0432\u0435\u0442\u043E\u0432. \u0412\u043E\u043F\u0440\u043E\u0441 \u043D\u0435\u043B\u044C\u0437\u044F \u043F\u0440\u043E\u043F\u0443\u0441\u0442\u0438\u0442\u044C, \u0445\u043E\u0442\u044F \u0431\u044B \u043E\u0434\u043D\u0430 \u043A\u043E\u043C\u0430\u043D\u0434\u0430 \u0434\u043E\u043B\u0436\u043D\u0430 \u043F\u043E\u043B\u0443\u0447\u0438\u0442\u044C \u043D\u0430\u0434\u043B\u0435\u0436\u0430\u0449\u0438\u0435 \u0431\u0430\u043B\u043B\u044B. \u0414\u0430\u043D\u043D\u044B\u0435 \u043F\u0440\u0430\u0432\u0438\u043B\u0430 \u043D\u0435 \u0435\u0434\u0438\u043D\u0441\u0442\u0432\u0435\u043D\u043D\u044B\u0435 \u0438 \u043C\u043E\u0433\u0443\u0442 \u0431\u044B\u0442\u044C \u0438\u0437\u043C\u0435\u043D\u0435\u043D\u044B \u043F\u043E \u0432\u043E\u043B\u0435 \u0432\u0435\u0434\u0443\u0449\u0435\u0433\u043E. \u0421\u0438\u0441\u0442\u0435\u043C\u0430 \u0448\u0442\u0440\u0430\u0444\u043E\u0432 \u043F\u0440\u0435\u0434\u0443\u0441\u043C\u043E\u0442\u0440\u0435\u043D\u0430 \u0432\u0435\u0434\u0443\u0449\u0438\u043C." })] })] }) });
 }
 
 
@@ -43942,13 +43919,15 @@ function QuestionView(_a) {
         var correct = (question === null || question === void 0 ? void 0 : question.correct) === i + 1;
         var isRed = false;
         var answer = document.getElementsByClassName('answer')[i];
+        answer.style.filter = 'brightness(0.75)';
         var interval = setInterval(function () {
-            answer.style.backgroundColor = "var(--light-".concat(isRed ? 'red' : 'green', ")");
+            answer.style.backgroundColor = "var(--bs-".concat(isRed ? 'danger' : 'success', ")");
             isRed = !isRed;
         }, 100);
         setTimeout(function () {
             clearInterval(interval);
-            answer.style.backgroundColor = "var(--bs-".concat(correct ? 'green' : 'red', ")");
+            answer.style.filter = '';
+            answer.style.backgroundColor = "var(--bs-".concat(correct ? 'success' : 'danger', ")");
             if (correct) {
                 var toast = bootstrap.Toast.getOrCreateInstance(document.getElementById('toast'));
                 toast.show();
@@ -43964,12 +43943,12 @@ function QuestionView(_a) {
             height: '100vh',
             padding: '5rem 20vw',
             transform: "translateY(".concat(question ? '0' : '-100', "vh)"),
-            background: 'linear-gradient(135deg, var(--light-green), var(--bs-green) 74%)'
+            backgroundImage: 'linear-gradient(315deg, #6610f2, #6f42c1 75%)'
         }, className: 'position-absolute d-flex flex-column align-items-center transition start-0 top-0', children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: { overflowX: 'auto', height: 'calc(50vh - 5rem)' }, className: 'w-100 text-center my-5 p-5 border rounded-pill', children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h1", { children: question === null || question === void 0 ? void 0 : question.label }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { style: { gridTemplateColumns: 'auto auto', height: 'calc(50vh - 5rem)' }, className: 'w-100 mt-5 d-grid', children: question === null || question === void 0 ? void 0 : question.answers.map(function (answer, i) {
                     return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { onClick: function () { return validate(i); }, className: 'answer onshadow text-center m-3 p-5 border rounded-pill', children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("h1", { children: answer }) }, i);
-                }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { id: 'toast', "data-bs-autohide": 'false', style: { width: '60vw' }, className: 'toast position-fixed bottom-0 mb-5 transition hide p-3 rounded-pill bg-red', children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'btn-group d-flex', children: teams.map(function (team, i) {
-                        return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { "data-bs-dismiss": 'toast', onClick: function () { return pick(i); }, className: 'btn flex-grow-1 btn-lg bg-red text-white', children: team.name }, i);
-                    }) }) }), [1, 2, 3].map(function (id) { return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("audio", { id: "audio".concat(id), src: "/static/assets/music".concat(id, ".mp3"), loop: true }); })] });
+                }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { id: 'toast', "data-bs-autohide": 'false', style: { width: '60vw' }, className: 'toast position-fixed bottom-0 mb-5 transition hide p-3 rounded-pill bg-danger', children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", { className: 'btn-group d-flex', children: teams.map(function (team, i) {
+                        return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("button", { "data-bs-dismiss": 'toast', onClick: function () { return pick(i); }, className: 'btn flex-grow-1 btn-lg bg-danger', children: team.name }, i);
+                    }) }) }), [1, 2, 3].map(function (id) { return (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("audio", { id: "audio".concat(id), src: "/static/assets/music".concat(id, ".mp3"), loop: true }, id); })] });
 }
 
 
@@ -58811,7 +58790,8 @@ _fortawesome_fontawesome_svg_core__WEBPACK_IMPORTED_MODULE_3__.library.add.apply
 
 
 var root = (0,react_dom_client__WEBPACK_IMPORTED_MODULE_2__.createRoot)(document.getElementById('main'));
-root.render((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)((react__WEBPACK_IMPORTED_MODULE_1___default().StrictMode), { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.BrowserRouter, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Routes, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, { path: '/', element: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_App__WEBPACK_IMPORTED_MODULE_5__["default"], {}), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, { path: '', element: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_Home__WEBPACK_IMPORTED_MODULE_6__["default"], {}) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, { path: 'quiz/:id', element: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_Game__WEBPACK_IMPORTED_MODULE_7__["default"], {}) })] }) }) }) }));
+var colors = ['danger', 'succes', 'warning', 'primary'];
+root.render((0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)((react__WEBPACK_IMPORTED_MODULE_1___default().StrictMode), { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.BrowserRouter, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Routes, { children: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, { path: '/', element: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_App__WEBPACK_IMPORTED_MODULE_5__["default"], {}), children: [(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, { path: '', element: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_Home__WEBPACK_IMPORTED_MODULE_6__["default"], { colors: colors }) }), (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, { path: 'quiz/:id', element: (0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(_components_Game__WEBPACK_IMPORTED_MODULE_7__["default"], { colors: colors }) })] }) }) }) }));
 
 })();
 

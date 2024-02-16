@@ -23,14 +23,15 @@ class QuizSerializer(ModelSerializer):
     fields = ['name', 'id']
     model = Quiz
 
-class QuizDetailedSerializer(ModelSerializer):
+class QuizDetailedSerializer(QuizSerializer):
   categories = CategorySerializer(many=True)
+  
+  class Meta:
+    fields = ['name', 'id', 'categories']
+    model = Quiz
   
   def get_categories(self, instance):
     return Category.objects.filter(quiz=instance)
-  
-  class Meta(QuizSerializer.Meta):
-    fields = '__all__'
   
 class TeamSerializer(ModelSerializer):
   class Meta:

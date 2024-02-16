@@ -10,28 +10,18 @@ export default function App() {
 	}, [])
 
 	return <div
-		style={{backgroundImage: 'linear-gradient(315deg, var(--light-red), var(--bs-red) 74%)', height: '100vh'}}
+		style={{backgroundImage: 'linear-gradient(315deg, #6610f2, #6f42c1 75%)', height: '100vh'}}
 		className='d-flex flex-column text-white'
 	>
 		<div className='d-flex py-5 shadow-lg'>
 			<div className='col-1' />
 			<div className='col-10 d-flex justify-content-between position-relative'>
 				<Link to='/' className='h1 no-link'>
-					<img
-						style={{maxHeight: '150%', transform: 'translate(-37.5%, -50%)'}}
-						src='/static/assets/hat.png'
-						className='position-absolute img-fluid'
-					/>
 					<span>Своя игра</span>
 				</Link>
-				<a href={isLoggedIn ? '/auth/logout/' : 'auth/login/'} className='no-link position-relative'>
-					<button className='btn btn-lg bg-green'>{isLoggedIn ? 'Выйти' : 'Войти'}</button>
-					<img
-						style={{maxHeight: '200%', transform: 'translateY(-25%)'}}
-						src='/static/assets/gingy.png'
-						className='position-absolute img-fluid'
-					/>
-				</a>
+				{!isLoggedIn ? <a href='auth/login/' className='no-link position-relative'>
+					<button className='btn btn-lg bg-primary'>Войти</button>
+				</a> : <button className='btn btn-lg bg-primary'>By @new_viperr_member</button>}
 			</div>
 			<div className='col-1' />
 		</div>
